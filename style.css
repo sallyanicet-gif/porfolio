@@ -14,7 +14,7 @@ html.dark .skill-card { background: linear-gradient(135deg, #1f2937, #374151) !i
 html.dark input, html.dark textarea { background: #374151 !important; color: #f9fafb !important; border-color: #4b5563 !important; }
 html.dark .a11y-panel-bg { background: #1f2937 !important; border-color: #374151 !important; }
 html.dark .footer-bg { background: #000 !important; }
-html.dark .tag { background: #86229a !important; color: rgb(226, 154, 255) !important; }
+html.dark .tag { background: #1e3a5f !important; color: #93c5fd !important; }
 html.dark .about-section-bg { background: #111827 !important; }
 html.dark .skills-section-bg { background: #111827 !important; }
 html.dark .projects-section-bg { background: #1f2937 !important; }
@@ -22,11 +22,34 @@ html.dark .contact-section-bg { background: #1f2937 !important; }
 html.dark .footer-link { color: #6b7280 !important; }
 html.dark .footer-icon-bg { background: #374151 !important; }
 html.dark .size-btn { background: #374151; color: #d1d5db; }
-html.dark .size-btn.active { background: #86229a; color: white; }
+html.dark .size-btn.active { background: #2563eb; color: white; }
 
 /* FONT SIZES */
 body.text-large { font-size: 18px; }
 body.text-xlarge { font-size: 20px; }
+
+/* Force inheritance of font-size for all elements when size classes are active */
+body.text-large *,
+body.text-xlarge * {
+    font-size: inherit !important;
+}
+
+/* Re-apply specific sizes relative to base for common UI elements */
+body.text-large { font-size: 18px; }
+body.text-large h1, body.text-large .hero-title { font-size: 3em !important; }
+body.text-large h2 { font-size: 2em !important; }
+body.text-large h3 { font-size: 1.2em !important; }
+body.text-large nav a, body.text-large .mobile-link { font-size: 0.9em !important; }
+body.text-large small, body.text-large .size-btn, body.text-large .tag,
+body.text-large label { font-size: 0.8em !important; }
+
+body.text-xlarge { font-size: 20px; }
+body.text-xlarge h1, body.text-xlarge .hero-title { font-size: 3em !important; }
+body.text-xlarge h2 { font-size: 2em !important; }
+body.text-xlarge h3 { font-size: 1.2em !important; }
+body.text-xlarge nav a, body.text-xlarge .mobile-link { font-size: 0.9em !important; }
+body.text-xlarge small, body.text-xlarge .size-btn, body.text-xlarge .tag,
+body.text-xlarge label { font-size: 0.8em !important; }
 
 /* HIGH CONTRAST */
 html.high-contrast { filter: contrast(1.5); }
@@ -156,7 +179,7 @@ html.dark .hero-grid {
     animation: gradientShift 12s ease infinite;
 }
 html.dark #accueil {
-    background: linear-gradient(-45deg, #0f172a, #1e1b4b, #0f172a, #5f176d, #1e1b4b);
+    background: linear-gradient(-45deg, #0f172a, #1e1b4b, #0f172a, #172554, #1e1b4b);
     background-size: 400% 400%;
     animation: gradientShift 12s ease infinite;
 }
@@ -176,19 +199,3 @@ html.no-animations #accueil {
     
 
 }
-.filter-bar { display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:48px; }
-        .filter-btn { padding:8px 18px;border-radius:9999px;border:2px solid #e5e7eb;background:white;color:#374151;font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s; }
-        .filter-btn:hover { border-color:#bb2ad9;color:#bb2ad9; }
-        .filter-btn.active { background:#bb2ad9;border-color:#bb2ad9;color:white; }
-        html.dark .filter-btn { background:#1f2937;border-color:#374151;color:#d1d5db; }
-        html.dark .filter-btn:hover { border-color:#bb2ad9;color:#bb2ad9; }
-        html.dark .filter-btn.active { background:#bb2ad9;border-color:#bb2ad9;color:white; }
-        .project-card { transition:opacity 0.25s ease,transform 0.25s ease; }
-        .project-card.hidden { display:none; }
-        #no-results { display:none;text-align:center;padding:48px 0;color:#6b7280;font-size:16px;grid-column:1/-1; }
-        #no-results span { font-size:40px;display:block;margin-bottom:12px; }
-        .tag-search-wrapper { display:flex;justify-content:center;margin-bottom:24px; }
-        .tag-search { width:100%;max-width:400px;padding:10px 18px 10px 42px;border:2px solid #e5e7eb;border-radius:9999px;font-size:14px;outline:none;background:white;color:#111827;transition:border-color 0.2s;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' stroke='%236b7280' viewBox='0 0 24 24'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 21l-4.35-4.35M17 11A6 6 0 1 1 5 11a6 6 0 0 1 12 0z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:14px center; }
-        .tag-search:focus { border-color:#bb2ad9; }
-        html.dark .tag-search { background-color:#1f2937;border-color:#374151;color:#f9fafb; }
-        html.dark .tag-search { background-color:#1f2937;border-color:#374151;color:#f9fafb; }
