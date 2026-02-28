@@ -65,44 +65,36 @@
         </div>
     </div>
 
-         <header id="main-header" style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;">
+
+    <!-- HEADER -->
+    <header id="main-header" style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;">
         <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;height:64px;">
             <div style="font-size:18px;font-weight:600;" class="text-gray-900">ANICET Neidjah - BUT MMI</div>
-
             <nav style="display:flex;gap:32px;align-items:center;" id="desktop-nav">
                 <a href="index.html" style="text-decoration:none;font-size:15px;" class="text-gray-700">Accueil</a>
-                <a href="#apropos" style="text-decoration:none;font-size:15px;" class="text-gray-700">À propos</a>
-                <a href="#projets" style="text-decoration:none;font-size:15px;" class="text-gray-700">Projets</a>
-                <a href="#competences" style="text-decoration:none;font-size:15px;" class="text-gray-700">Compétences</a>
-                <a href="#contact" style="text-decoration:none;font-size:15px;" class="text-gray-700">Contact</a>
-                <button id="header-dark-btn"
-                    style="width:36px;height:36px;border-radius:8px;border:none;cursor:pointer;background:transparent;display:flex;align-items:center;justify-content:center;"
-                    aria-label="Basculer le mode sombre">
+                <a href="index.html#apropos" style="text-decoration:none;font-size:15px;" class="text-gray-700">À propos</a>
+                <a href="project.html" style="text-decoration:none;font-size:15px;color:#2563eb;font-weight:600;">Projets</a>
+                <a href="index.html#competences" style="text-decoration:none;font-size:15px;" class="text-gray-700">Compétences</a>
+                <a href="contact.html" style="text-decoration:none;font-size:15px;" class="text-gray-700">Contact</a>
+                <button id="header-dark-btn" style="width:36px;height:36px;border-radius:8px;border:none;cursor:pointer;background:transparent;display:flex;align-items:center;justify-content:center;" aria-label="Basculer le mode sombre">
                     <span id="header-icon">🌙</span>
                 </button>
             </nav>
-
             <button id="mobile-btn" style="border:none;background:transparent;cursor:pointer;padding:4px;" aria-label="Menu">
-                <svg id="icon-menu" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-                </svg>
-                <svg id="icon-close" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display:none;">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
-                </svg>
+                <svg id="icon-menu" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg id="icon-close" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
         </div>
-
         <div id="mobile-menu" class="mobile-menu" style="border-top:1px solid #e5e7eb;">
             <div style="padding:16px 24px;display:flex;flex-direction:column;gap:16px;">
-                <a href="#accueil" class="mobile-link text-gray-700" style="text-decoration:none;font-size:15px;">Accueil</a>
-                <a href="#apropos" class="mobile-link text-gray-700" style="text-decoration:none;font-size:15px;">À propos</a>
-                <a href="#projets" class="mobile-link text-gray-700" style="text-decoration:none;font-size:15px;">Projets</a>
-                <a href="#competences" class="mobile-link text-gray-700" style="text-decoration:none;font-size:15px;">Compétences</a>
-                <a href="#contact" class="mobile-link text-gray-700" style="text-decoration:none;font-size:15px;">Contact</a>
+                <a href="index.html" class="mobile-link text-gray-700" style="text-decoration:none;font-size:15px;">Accueil</a>
+                <a href="index.html#apropos" class="mobile-link text-gray-700" style="text-decoration:none;font-size:15px;">À propos</a>
+                <a href="project.html" class="mobile-link" style="text-decoration:none;font-size:15px;color:#2563eb;font-weight:600;">Projets</a>
+                <a href="index.html#competences" class="mobile-link text-gray-700" style="text-decoration:none;font-size:15px;">Compétences</a>
+                <a href="contact.html" class="mobile-link text-gray-700" style="text-decoration:none;font-size:15px;">Contact</a>
             </div>
         </div>
     </header>
-
         
         <section id="contact" class="contact-section-bg" style="padding:80px 24px;background:#f9fafb;">
         <div style="max-width:1100px;margin:0 auto;">
