@@ -14,6 +14,7 @@ const state = { dark: false, fontSize: 'normal', contrast: false, noAnim: false 
 function setDark(on) {
     state.dark = on;
     document.documentElement.classList.toggle('dark', on);
+    localStorage.setItem('darkMode', on ? '1' : '0');
     const icon = el('header-icon');
     if (icon) icon.textContent = on ? '☀️' : '🌙';
     const header = el('main-header');
@@ -21,6 +22,11 @@ function setDark(on) {
     const toggle = el('dark-toggle');
     if (toggle) { toggle.classList.toggle('on', on); toggle.setAttribute('aria-checked', on); }
 }
+
+// ── Restauration au chargement ───────────────────────────────
+(function initDark() {
+    if (localStorage.getItem('darkMode') === '1') setDark(true);
+})();
 
 el('header-dark-btn')?.addEventListener('click', () => setDark(!state.dark));
 el('dark-toggle')?.addEventListener('click',      () => setDark(!state.dark));
