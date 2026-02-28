@@ -19,7 +19,7 @@
         </button>
 
         <div id="a11y-panel" class="a11y-panel a11y-panel-bg"
-            style="position:absolute;bottom:68px;right:0;width:300px;background:white;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.18);border:1px solid #e5e7eb;padding:24px;">
+            style="position:absolute;bottom:68px;right:0;width:220px;background:white;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.18);border:2px solid #e5e7eb;padding:20px;">
 
             <h3 style="font-size:16px;font-weight:600;margin-bottom:16px;" class="text-gray-900">Options d'accessibilité</h3>
 
@@ -69,7 +69,7 @@
     <!-- HEADER -->
     <header id="main-header" style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;">
         <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;height:64px;">
-            <div style="font-size:18px;font-weight:600;" class="text-gray-900">Portfolio</div>
+            <div style="font-size:18px;font-weight:600;" class="text-gray-900">ANICET Neidjah - BUT MMI</div>
             <nav style="display:flex;gap:32px;align-items:center;" id="desktop-nav">
                 <a href="index.html" style="text-decoration:none;font-size:15px;" class="text-gray-700">Accueil</a>
                 <a href="index.html#apropos" style="text-decoration:none;font-size:15px;" class="text-gray-700">À propos</a>
@@ -81,8 +81,8 @@
                 </button>
             </nav>
             <button id="mobile-btn" style="border:none;background:transparent;cursor:pointer;padding:4px;" aria-label="Menu">
-                <svg id="icon-menu" width="24" height="24" fill="none" stroke="#111827" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-                <svg id="icon-close" width="24" height="24" fill="none" stroke="#111827" viewBox="0 0 24 24" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                <svg id="icon-menu" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+                <svg id="icon-close" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
         </div>
         <div id="mobile-menu" class="mobile-menu" style="border-top:1px solid #e5e7eb;">
@@ -117,13 +117,26 @@
             <div id="projects-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:32px;">
 
                 <!-- Carte 1 -->
-                <div class="project-card" data-tags="affiche,design" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
+                <div class="project-card" data-tags="Production graphique" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
                     <div style="position:relative;height:220px;overflow:hidden;">
                         <img src="images/Illustration6.png" alt="Affiche de concert du groupe Insane Clown Posse" style="width:100%;height:100%;object-fit:cover;display:block;"/>
                         <div class="project-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">
-                            <button style="width:44px;height:44px;border-radius:9999px;background:white;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;" aria-label="Voir le projet">
-                                <svg width="18" height="18" fill="none" stroke="#111" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                            </button>
+                            <a href="https://www.image-heberg.fr/files/17722959451235490333.png" style="
+                                        width: 44px;
+                                        height: 44px;
+                                        border-radius: 9999px;
+                                        background: white;
+                                        border: none;
+                                        cursor: pointer;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        text-decoration: none;
+                                    " aria-label="Voir le projet">
+                                    <svg width="18" height="18" fill="none" stroke="#111" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                    </svg>
+                                </a>
                         </div>
                     </div>
                     <div style="padding:24px;">
@@ -137,13 +150,26 @@
                 </div>
 
                 <!-- Carte 2 -->
-                <div class="project-card" data-tags="pub,collaboratifs" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
+                <div class="project-card" data-tags="Production graphique,collaboratifs" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
                     <div style="position:relative;height:220px;overflow:hidden;">
                         <img src="images/mockup.png" alt="Pub Flora Gucci" style="width:100%;height:100%;object-fit:cover;display:block;"/>
                         <div class="project-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">
-                            <button style="width:44px;height:44px;border-radius:9999px;background:white;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;" aria-label="Voir le projet">
-                                <svg width="18" height="18" fill="none" stroke="#111" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                            </button>
+                           <a href="https://drive.google.com/drive/folders/1LPzavSL3eCfmo5cXGz4ang-ZFnPsYqqe?usp=sharing" style="
+                                        width: 44px;
+                                        height: 44px;
+                                        border-radius: 9999px;
+                                        background: white;
+                                        border: none;
+                                        cursor: pointer;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        text-decoration: none;
+                                    " aria-label="Voir le projet">
+                                    <svg width="18" height="18" fill="none" stroke="#111" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                    </svg>
+                                </a>
                         </div>
                     </div>
                     <div style="padding:24px;">
@@ -157,13 +183,26 @@
                 </div>
 
                 <!-- Carte 3 -->
-                <div class="project-card" data-tags="branding,logo" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
+                <div class="project-card" data-tags="Production graphique" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
                     <div style="position:relative;height:220px;overflow:hidden;">
                         <img src="images/logo_noodles.png" alt="Identité de marque" style="width:100%;height:100%;object-fit:cover;display:block;"/>
                         <div class="project-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">
-                            <button style="width:44px;height:44px;border-radius:9999px;background:white;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;" aria-label="Voir le projet">
-                                <svg width="18" height="18" fill="none" stroke="#111" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
-                            </button>
+                            <a href="https://drive.google.com/drive/folders/13_zx-Mh8qHjlZWkhObGA_Y-iZBeem61A?usp=drive_link" style="
+                                        width: 44px;
+                                        height: 44px;
+                                        border-radius: 9999px;
+                                        background: white;
+                                        border: none;
+                                        cursor: pointer;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        text-decoration: none;
+                                    " aria-label="Voir le projet">
+                                    <svg width="18" height="18" fill="none" stroke="#111" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                    </svg>
+                                </a>
                         </div>
                     </div>
                     <div style="padding:24px;">
@@ -175,7 +214,166 @@
                         </div>
                     </div>
                 </div>
+                 <!-- Carte 4 -->
+                <div class="project-card" data-tags="Projet Perso" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
+                    <div style="position:relative;height:220px;overflow:hidden;">
+                        <img src="images/pperso.png" alt="Site personel" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+                        <div class="project-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">
+                           <a href="https://sillylinks.carrd.co/#" style="
+                                        width: 44px;
+                                        height: 44px;
+                                        border-radius: 9999px;
+                                        background: white;
+                                        border: none;
+                                        cursor: pointer;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        text-decoration: none;
+                                    " aria-label="Voir le projet">
+                                    <svg width="18" height="18" fill="none" stroke="#111" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                    </svg>
+                                </a>
+                        </div>
+                    </div>
+                    <div style="padding:24px;">
+                        <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;" class="text-gray-900">Site Personel</h3>
+                        <p style="font-size:14px;line-height:1.6;margin-bottom:16px;" class="text-gray-600">Mon site personnel qui regroupe la plupart de mes projets personnel.</p>
+                        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                            <span class="tag" data-tag="pperso" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Projects Perso</span>
+                            <span class="tag" data-tag="website" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Website</span>
+                        </div>
+                    </div>
+                </div>
+   <!-- Carte 5 -->
+                <div class="project-card" data-tags="Développement Web,collaboratifs" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
+                    <div style="position:relative;height:220px;overflow:hidden;">
+                        <img src="images/site_maeries.png" alt="Site Mareis" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+                        <div class="project-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">
+                           <a href="https://sallyanicet-gif.github.io/sae-1.05/" style="
+                                        width: 44px;
+                                        height: 44px;
+                                        border-radius: 9999px;
+                                        background: white;
+                                        border: none;
+                                        cursor: pointer;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        text-decoration: none;
+                                    " aria-label="Voir le projet">
+                                    <svg width="18" height="18" fill="none" stroke="#111" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                    </svg>
+                                </a>
+                        </div>
+                    </div>
+                    <div style="padding:24px;">
+                        <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;" class="text-gray-900">Site Mareis</h3>
+                        <p style="font-size:14px;line-height:1.6;margin-bottom:16px;" class="text-gray-600">Site fais en collaborations sur la protection maritime.</p>
+                        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                            <span class="tag" data-tag="pperso" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Projects Perso</span>
+                            <span class="tag" data-tag="website" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Website</span>
+                        </div>
+                    </div>
+                </div>
+<!-- Carte 6 -->
+                <div class="project-card" data-tags="Production graphique" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
+                    <div style="position:relative;height:220px;overflow:hidden;">
+                        <img src="images/img_photoshop.png" alt="Portrait Plastique" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+                        <div class="project-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">
+                           <a href="https://www.image-heberg.fr/files/17722963212414680389.png" style="
+                                        width: 44px;
+                                        height: 44px;
+                                        border-radius: 9999px;
+                                        background: white;
+                                        border: none;
+                                        cursor: pointer;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        text-decoration: none;
+                                    " aria-label="Voir le projet">
+                                    <svg width="18" height="18" fill="none" stroke="#111" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                    </svg>
+                                </a>
+                        </div>
+                    </div>
+                    <div style="padding:24px;">
+                        <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;" class="text-gray-900">Portrait Plastique</h3>
+                        <p style="font-size:14px;line-height:1.6;margin-bottom:16px;" class="text-gray-600">Montage fais utilisant Photoshop</p>
+                        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                            <span class="tag" data-tag="pperso" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Photoshop</span>
+                        </div>
+                    </div>
+                </div>
+                     <!-- Carte 7 -->
+                <div class="project-card" data-tags="Production graphique,Expression" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
+                    <div style="position:relative;height:220px;overflow:hidden;">
+                        <img src="images/Flyer_illustratif.png" alt="Flyer BUT MMI" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+                        <div class="project-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">
+                          <a href="https://www.image-heberg.fr/files/17719411391197422053.png" style="
+                                        width: 44px;
+                                        height: 44px;
+                                        border-radius: 9999px;
+                                        background: white;
+                                        border: none;
+                                        cursor: pointer;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        text-decoration: none;
+                                    " aria-label="Voir le projet">
+                                    <svg width="18" height="18" fill="none" stroke="#111" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                    </svg>
+                                </a>
+                        </div>
+                    </div>
+                    <div style="padding:24px;">
+                        <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;" class="text-gray-900">Flyer BUT MMI</h3>
+                        <p style="font-size:14px;line-height:1.6;margin-bottom:16px;" class="text-gray-600">Flyer sur le BUT MMI</p>
+                        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                            <span class="tag" data-tag="affiche" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Affiche</span>
+                            <span class="tag" data-tag="design" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Design</span>
+                        </div>
+                    </div>
+                </div>
 
+                     <!-- Carte 8 -->
+                <div class="project-card" data-tags="Production audio & video,collaboratifs" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
+                    <div style="position:relative;height:220px;overflow:hidden;">
+                        <img src="images/film1.png" alt="Extrait du film" style="width:100%;height:100%;object-fit:cover;display:block;"/>
+                        <div class="project-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">
+                           <a href="https://youtu.be/Y85a9M9mVBk" style="
+                                        width: 44px;
+                                        height: 44px;
+                                        border-radius: 9999px;
+                                        background: white;
+                                        border: none;
+                                        cursor: pointer;
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        text-decoration: none;
+                                    " aria-label="Voir le projet">
+                                    <svg width="18" height="18" fill="none" stroke="#111" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                    </svg>
+                                </a>
+                        </div>
+                    </div>
+                    <div style="padding:24px;">
+                        <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;" class="text-gray-900">Film d'horreur&nbsp;</h3>
+                        <p style="font-size:14px;line-height:1.6;margin-bottom:16px;" class="text-gray-600">Un extrait de&nbsp; 1 minute d'un film d'horreur fais en collaborations.</p>
+                        <div style="display:flex;flex-wrap:wrap;gap:8px;">
+                            <span class="tag" data-tag="affiche" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Vidéographie&nbsp;</span>
+                            <span class="tag" data-tag="affiche" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Collaboratifs</span>
+                        </div>
+                    </div>
+                </div>
                 <!-- Message aucun résultat -->
                 <div id="no-results">
                     <span>🔍</span>
