@@ -1,49 +1,48 @@
 /* ============================================================
-   script.js — Partagé entre index.html et project.html
-   Les blocs gardés par el() ne s'exécutent que si l'élément
-   existe sur la page courante.
+   script.js — Portfolio ANICET Neidjah
+   Partagé entre index.html, project.html et contact.html.
+   Chaque bloc est protégé par une vérification d'existence
+   de l'élément : aucune erreur si un ID est absent.
    ============================================================ */
 
-// Helper : retourne l'élément ou null sans erreur
-function el(id) { return document.getElementById(id); }
+// ── Helper ───────────────────────────────────────────────────
+const el = id => document.getElementById(id);
 
 // ── État global ──────────────────────────────────────────────
 const state = { dark: false, fontSize: 'normal', contrast: false, noAnim: false };
 
-// ── Dark mode (commun) ───────────────────────────────────────
+// ── Dark mode ────────────────────────────────────────────────
 function setDark(on) {
     state.dark = on;
     document.documentElement.classList.toggle('dark', on);
     localStorage.setItem('darkMode', on ? '1' : '0');
-    const icon = el('header-icon');
-    if (icon) icon.textContent = on ? '☀️' : '🌙';
-    const header = el('main-header');
-    if (header) header.style.background = on ? 'rgba(17,24,39,0.9)' : 'rgba(255,255,255,0.85)';
+    const icon   = el('header-icon');
     const toggle = el('dark-toggle');
+    if (icon)   icon.textContent = on ? '☀️' : '🌙';
     if (toggle) { toggle.classList.toggle('on', on); toggle.setAttribute('aria-checked', on); }
 }
 
-// ── Restauration au chargement ───────────────────────────────
-(function initDark() {
-    if (localStorage.getItem('darkMode') === '1') setDark(true);
-})();
+// Restauration au chargement
+if (localStorage.getItem('darkMode') === '1') setDark(true);
 
 el('header-dark-btn')?.addEventListener('click', () => setDark(!state.dark));
 el('dark-toggle')?.addEventListener('click',      () => setDark(!state.dark));
 
-// ── Taille du texte (index uniquement) ──────────────────────
+// ── Taille du texte ──────────────────────────────────────────
 function setFontSize(size) {
     state.fontSize = size;
     document.body.classList.remove('text-large', 'text-xlarge');
     if (size === 'large')  document.body.classList.add('text-large');
     if (size === 'xlarge') document.body.classList.add('text-xlarge');
-    document.querySelectorAll('.size-btn').forEach(b => b.classList.toggle('active', b.dataset.size === size));
+    document.querySelectorAll('.size-btn').forEach(b =>
+        b.classList.toggle('active', b.dataset.size === size)
+    );
 }
-el('btn-normal')?.addEventListener('click', () => setFontSize('normal'));
-el('btn-large')?.addEventListener('click',  () => setFontSize('large'));
-el('btn-xlarge')?.addEventListener('click', () => setFontSize('xlarge'));
+el('btn-normal')?.addEventListener('click',  () => setFontSize('normal'));
+el('btn-large')?.addEventListener('click',   () => setFontSize('large'));
+el('btn-xlarge')?.addEventListener('click',  () => setFontSize('xlarge'));
 
-// ── Contraste élevé (index uniquement) ──────────────────────
+// ── Contraste élevé ──────────────────────────────────────────
 function setContrast(on) {
     state.contrast = on;
     document.documentElement.classList.toggle('high-contrast', on);
@@ -52,7 +51,7 @@ function setContrast(on) {
 }
 el('contrast-toggle')?.addEventListener('click', () => setContrast(!state.contrast));
 
-// ── Désactiver animations (index uniquement) ─────────────────
+// ── Désactiver animations ────────────────────────────────────
 function setAnim(disabled) {
     state.noAnim = disabled;
     document.documentElement.classList.toggle('no-animations', disabled);
@@ -61,53 +60,46 @@ function setAnim(disabled) {
 }
 el('anim-toggle')?.addEventListener('click', () => setAnim(!state.noAnim));
 
-// ── Réinitialiser (index uniquement) ────────────────────────
+// ── Réinitialiser accessibilité ──────────────────────────────
 el('reset-btn')?.addEventListener('click', () => {
     setDark(false); setFontSize('normal'); setContrast(false); setAnim(false);
 });
 
-// ── Panel accessibilité (index uniquement) ───────────────────
+// ── Panel accessibilité ──────────────────────────────────────
 const a11yBtn   = el('a11y-btn');
 const a11yPanel = el('a11y-panel');
 if (a11yBtn && a11yPanel) {
-    a11yBtn.addEventListener('click', e => { e.stopPropagation(); a11yPanel.classList.toggle('open'); });
+    a11yBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        a11yPanel.classList.toggle('visible');
+    });
     document.addEventListener('click', e => {
-        if (!a11yPanel.contains(e.target) && e.target !== a11yBtn) a11yPanel.classList.remove('open');
+        if (!a11yPanel.contains(e.target) && e.target !== a11yBtn)
+            a11yPanel.classList.remove('visible');
     });
 }
 
-// ── Particules hero (index uniquement) ──────────────────────
-const particlesContainer = el('particles-container');
-if (particlesContainer) {
-    const colors = [
-        'rgba(99,102,241,0.7)', 'rgba(139,92,246,0.6)',
-        'rgba(37,99,235,0.6)',  'rgba(236,72,153,0.5)',
-        'rgba(255,255,255,0.8)'
-    ];
-    function createParticle() {
-        if (document.documentElement.classList.contains('no-animations')) return;
-        const p = document.createElement('div');
-        const size     = Math.random() * 5 + 2;
-        const duration = Math.random() * 12 + 8;
-        const delay    = Math.random() * 3;
-        const color    = colors[Math.floor(Math.random() * colors.length)];
-        p.className = 'particle';
-        p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;bottom:-20px;`
-            + `background:${color};animation-duration:${duration}s;animation-delay:${delay}s;`
-            + `box-shadow:0 0 ${size*3}px ${color};`;
-        particlesContainer.appendChild(p);
-        setTimeout(() => { if (p.parentNode) p.remove(); }, (duration + delay + 1) * 1000);
-    }
-    for (let i = 0; i < 25; i++) setTimeout(createParticle, i * 150);
-    setInterval(createParticle, 500);
+// ── Menu mobile (index — navbar) ─────────────────────────────
+const menuToggle = el('menuToggle');
+const navLinks   = el('navLinks');
+if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
 }
 
-// ── Menu mobile (commun) ────────────────────────────────────
+// ── Menu mobile (project / contact — header) ─────────────────
 const mobileBtn  = el('mobile-btn');
 const mobileMenu = el('mobile-menu');
 const iconMenu   = el('icon-menu');
 const iconClose  = el('icon-close');
-
 if (mobileBtn && mobileMenu) {
     mobileBtn.addEventListener('click', () => {
         const isOpen = mobileMenu.classList.toggle('open');
@@ -123,76 +115,78 @@ if (mobileBtn && mobileMenu) {
     });
 }
 
-// ── Formulaire de contact (index uniquement) ─────────────────
-const contactForm = el('contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+// ── Smooth scroll (index) ────────────────────────────────────
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        const target = document.querySelector(this.getAttribute('href'));
+        if (!target) return;
         e.preventDefault();
-        const name    = el('name').value.trim();
-        const email   = el('email').value.trim();
-        const message = el('message').value.trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        let valid = true;
+        const navH = document.querySelector('.navbar')?.offsetHeight ?? 0;
+        window.scrollTo({ top: target.offsetTop - navH, behavior: 'smooth' });
+    });
+});
 
-        const nameErr = el('name-error');
-        if (!name)   { nameErr.style.display = 'block'; valid = false; } else nameErr.style.display = 'none';
+// ── Animate on scroll ────────────────────────────────────────
+const scrollObserver = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animated'); }),
+    { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+);
+document.querySelectorAll('.animate-on-scroll').forEach(el => scrollObserver.observe(el));
 
-        const emailErr = el('email-error');
-        if (!email || !emailRegex.test(email)) { emailErr.style.display = 'block'; valid = false; } else emailErr.style.display = 'none';
-
-        const msgErr = el('message-error');
-        if (!message) { msgErr.style.display = 'block'; valid = false; } else msgErr.style.display = 'none';
-
-        if (!valid) return;
-        const success = el('form-success');
-        success.style.display = 'block';
-        this.reset();
-        setTimeout(() => { success.style.display = 'none'; }, 5000);
+// ── Nav link active au scroll (index) ───────────────────────
+const sections   = document.querySelectorAll('section[id]');
+const navLinkEls = document.querySelectorAll('.nav-link');
+if (sections.length && navLinkEls.length) {
+    window.addEventListener('scroll', () => {
+        const scrollY = window.pageYOffset;
+        sections.forEach(section => {
+            const top = section.offsetTop - 100;
+            const id  = section.getAttribute('id');
+            if (scrollY > top && scrollY <= top + section.offsetHeight) {
+                navLinkEls.forEach(l => {
+                    l.classList.remove('active');
+                    if (l.getAttribute('href') === '#' + id) l.classList.add('active');
+                });
+            }
+        });
     });
 }
 
-// ── Filtrage par tag (project.html uniquement) ───────────────
+// ── Filtrage par tag (project.html) ──────────────────────────
 const filterBar   = el('filter-bar');
 const searchInput = el('tag-search');
 const noResults   = el('no-results');
 const cards       = document.querySelectorAll('.project-card[data-tags]');
 
 if (filterBar && cards.length > 0) {
-    // Générer les boutons de filtre depuis les tags des cartes
+    // Générer les boutons de filtre depuis les data-tags des cartes
     const allTags = new Set();
-    cards.forEach(card => card.dataset.tags.split(',').forEach(t => allTags.add(t.trim().toLowerCase())));
-
+    cards.forEach(card =>
+        card.dataset.tags.split(',').forEach(t => allTags.add(t.trim().toLowerCase()))
+    );
     allTags.forEach(tag => {
         const btn = document.createElement('button');
-        btn.className    = 'filter-btn';
-        btn.dataset.tag  = tag;
-        btn.textContent  = tag.charAt(0).toUpperCase() + tag.slice(1);
+        btn.className   = 'filter-btn';
+        btn.dataset.tag = tag;
+        btn.textContent = tag.charAt(0).toUpperCase() + tag.slice(1);
         filterBar.appendChild(btn);
     });
 
     let activeTag = 'all';
 
     function applyFilters() {
-        const search = searchInput ? searchInput.value.trim().toLowerCase() : '';
-        let visibleCount = 0;
-
+        const search = searchInput?.value.trim().toLowerCase() ?? '';
+        let count = 0;
         cards.forEach(card => {
             const tags        = card.dataset.tags.split(',').map(t => t.trim().toLowerCase());
             const matchTag    = activeTag === 'all' || tags.includes(activeTag);
             const matchSearch = search === '' || tags.some(t => t.includes(search));
-
-            if (matchTag && matchSearch) {
-                card.classList.remove('hidden');
-                visibleCount++;
-            } else {
-                card.classList.add('hidden');
-            }
+            card.classList.toggle('hidden', !(matchTag && matchSearch));
+            if (matchTag && matchSearch) count++;
         });
-
-        if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+        if (noResults) noResults.style.display = count === 0 ? 'block' : 'none';
     }
 
-    // Clic sur un bouton de filtre
     filterBar.addEventListener('click', e => {
         const btn = e.target.closest('.filter-btn');
         if (!btn) return;
@@ -203,23 +197,110 @@ if (filterBar && cards.length > 0) {
         applyFilters();
     });
 
-    // Clic sur un badge tag dans une carte
     document.querySelectorAll('.tag[data-tag]').forEach(tagEl => {
         tagEl.addEventListener('click', () => {
             const tag = tagEl.dataset.tag.toLowerCase();
             activeTag = tag;
             if (searchInput) searchInput.value = '';
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.tag === tag));
+            document.querySelectorAll('.filter-btn').forEach(b =>
+                b.classList.toggle('active', b.dataset.tag === tag)
+            );
             applyFilters();
         });
     });
 
-    // Recherche libre
-    if (searchInput) {
-        searchInput.addEventListener('input', () => {
-            activeTag = 'all';
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.tag === 'all'));
-            applyFilters();
-        });
-    }
+    searchInput?.addEventListener('input', () => {
+        activeTag = 'all';
+        document.querySelectorAll('.filter-btn').forEach(b =>
+            b.classList.toggle('active', b.dataset.tag === 'all')
+        );
+        applyFilters();
+    });
 }
+    // ── Filtrage par tag ──────────────────────────────────────
+    (function() {
+      const filterBar   = document.getElementById('filter-bar');
+      const searchInput = document.getElementById('tag-search');
+      const noResults   = document.getElementById('no-results');
+      const cards       = document.querySelectorAll('.project-card[data-tags]');
+      if (!filterBar || !cards.length) return;
+
+      // Collecter tous les data-tag uniques depuis les spans .tag dans les cartes
+      const allTags = new Set();
+      cards.forEach(card => {
+        card.querySelectorAll('.tag[data-tag]').forEach(t => allTags.add(t.dataset.tag.toLowerCase()));
+      });
+
+      // Générer les boutons de filtre
+      allTags.forEach(tag => {
+        // Trouver le label affiché depuis le span correspondant
+        const label = document.querySelector(`.tag[data-tag="${tag}"]`)?.textContent.trim() ?? (tag.charAt(0).toUpperCase() + tag.slice(1));
+        const btn = document.createElement('button');
+        btn.className   = 'filter-btn';
+        btn.dataset.tag = tag;
+        btn.textContent = label;
+        filterBar.appendChild(btn);
+      });
+
+      let activeTag = 'all';
+
+      function applyFilters() {
+        const search = searchInput ? searchInput.value.trim().toLowerCase() : '';
+        let count = 0;
+        cards.forEach(card => {
+          // Récupérer tous les data-tag des spans dans cette carte
+          const tags = Array.from(card.querySelectorAll('.tag[data-tag]'))
+                            .map(t => t.dataset.tag.toLowerCase());
+          // Aussi chercher dans le texte des tags (pour la barre de recherche)
+          const tagTexts = Array.from(card.querySelectorAll('.tag[data-tag]'))
+                               .map(t => t.textContent.trim().toLowerCase());
+
+          const matchTag    = activeTag === 'all' || tags.includes(activeTag);
+          const matchSearch = search === '' ||
+                              tags.some(t => t.includes(search)) ||
+                              tagTexts.some(t => t.includes(search));
+
+          const visible = matchTag && matchSearch;
+          card.classList.toggle('hidden', !visible);
+          if (visible) count++;
+        });
+        if (noResults) noResults.style.display = count === 0 ? 'block' : 'none';
+      }
+
+      // Clic bouton filtre
+      filterBar.addEventListener('click', e => {
+        const btn = e.target.closest('.filter-btn');
+        if (!btn) return;
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeTag = btn.dataset.tag;
+        if (searchInput && activeTag !== 'all') searchInput.value = '';
+        applyFilters();
+      });
+
+      // Clic sur un tag dans une carte
+      cards.forEach(card => {
+        card.querySelectorAll('.tag[data-tag]').forEach(tagEl => {
+          tagEl.addEventListener('click', () => {
+            const tag = tagEl.dataset.tag.toLowerCase();
+            activeTag = tag;
+            if (searchInput) searchInput.value = '';
+            document.querySelectorAll('.filter-btn').forEach(b =>
+              b.classList.toggle('active', b.dataset.tag === tag)
+            );
+            applyFilters();
+          });
+        });
+      });
+
+      // Recherche libre
+      if (searchInput) {
+        searchInput.addEventListener('input', () => {
+          activeTag = 'all';
+          document.querySelectorAll('.filter-btn').forEach(b =>
+            b.classList.toggle('active', b.dataset.tag === 'all')
+          );
+          applyFilters();
+        });
+      }
+    })();
