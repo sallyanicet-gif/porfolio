@@ -131,7 +131,7 @@ const scrollObserver = new IntersectionObserver(
     entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('animated'); }),
     { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
 );
-document.querySelectorAll('.animate-on-scroll').forEach(el => scrollObserver.observe(el));
+document.querySelectorAll('.animate-on-scroll').forEach(node => scrollObserver.observe(node));
 
 // ── Nav link active au scroll (index) ────────────────────────
 const sections   = document.querySelectorAll('section[id]');
@@ -160,7 +160,7 @@ const cards       = document.querySelectorAll('.project-card[data-tags]');
 
 if (filterBar && cards.length > 0) {
 
-    // Générer les boutons de filtre depuis les data-tags des cartes
+    // Générer les boutons depuis data-tags des cartes (valeurs originales préservées)
     const allTags = new Set();
     cards.forEach(card =>
         card.dataset.tags.split(',').forEach(t => allTags.add(t.trim()))
@@ -168,8 +168,8 @@ if (filterBar && cards.length > 0) {
     allTags.forEach(tag => {
         const btn = document.createElement('button');
         btn.className   = 'filter-btn';
-        btn.dataset.tag = tag.toLowerCase();
-        btn.textContent = tag;
+        btn.dataset.tag = tag.toLowerCase();  // stocké en minuscule pour comparaison
+        btn.textContent = tag;                // affiché tel quel
         filterBar.appendChild(btn);
     });
 
@@ -179,6 +179,7 @@ if (filterBar && cards.length > 0) {
         const search = searchInput?.value.trim().toLowerCase() ?? '';
         let count = 0;
         cards.forEach(card => {
+            // Comparer en lowercase des deux côtés
             const tags = card.dataset.tags.split(',').map(t => t.trim().toLowerCase());
             const matchTag    = activeTag === 'all' || tags.includes(activeTag);
             const matchSearch = search === '' || tags.some(t => t.includes(search));
@@ -194,7 +195,7 @@ if (filterBar && cards.length > 0) {
         if (!btn) return;
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        activeTag = btn.dataset.tag;
+        activeTag = btn.dataset.tag; // déjà en lowercase
         if (searchInput && activeTag !== 'all') searchInput.value = '';
         applyFilters();
     });
