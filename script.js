@@ -133,7 +133,7 @@ const scrollObserver = new IntersectionObserver(
 );
 document.querySelectorAll('.animate-on-scroll').forEach(el => scrollObserver.observe(el));
 
-// ── Nav link active au scroll (index) ───────────────────────
+// ── Nav link active au scroll (index) ────────────────────────
 const sections   = document.querySelectorAll('section[id]');
 const navLinkEls = document.querySelectorAll('.nav-link');
 if (sections.length && navLinkEls.length) {
@@ -159,16 +159,17 @@ const noResults   = el('no-results');
 const cards       = document.querySelectorAll('.project-card[data-tags]');
 
 if (filterBar && cards.length > 0) {
+
     // Générer les boutons de filtre depuis les data-tags des cartes
     const allTags = new Set();
     cards.forEach(card =>
-        card.dataset.tags.split(',').forEach(t => allTags.add(t.trim().toLowerCase()))
+        card.dataset.tags.split(',').forEach(t => allTags.add(t.trim()))
     );
     allTags.forEach(tag => {
         const btn = document.createElement('button');
         btn.className   = 'filter-btn';
-        btn.dataset.tag = tag;
-        btn.textContent = tag.charAt(0).toUpperCase() + tag.slice(1);
+        btn.dataset.tag = tag.toLowerCase();
+        btn.textContent = tag;
         filterBar.appendChild(btn);
     });
 
@@ -178,7 +179,7 @@ if (filterBar && cards.length > 0) {
         const search = searchInput?.value.trim().toLowerCase() ?? '';
         let count = 0;
         cards.forEach(card => {
-            const tags        = card.dataset.tags.split(',').map(t => t.trim().toLowerCase());
+            const tags = card.dataset.tags.split(',').map(t => t.trim().toLowerCase());
             const matchTag    = activeTag === 'all' || tags.includes(activeTag);
             const matchSearch = search === '' || tags.some(t => t.includes(search));
             card.classList.toggle('hidden', !(matchTag && matchSearch));
@@ -187,6 +188,7 @@ if (filterBar && cards.length > 0) {
         if (noResults) noResults.style.display = count === 0 ? 'block' : 'none';
     }
 
+    // Clic sur un bouton de filtre
     filterBar.addEventListener('click', e => {
         const btn = e.target.closest('.filter-btn');
         if (!btn) return;
@@ -197,18 +199,7 @@ if (filterBar && cards.length > 0) {
         applyFilters();
     });
 
-    document.querySelectorAll('.tag[data-tag]').forEach(tagEl => {
-        tagEl.addEventListener('click', () => {
-            const tag = tagEl.dataset.tag.toLowerCase();
-            activeTag = tag;
-            if (searchInput) searchInput.value = '';
-            document.querySelectorAll('.filter-btn').forEach(b =>
-                b.classList.toggle('active', b.dataset.tag === tag)
-            );
-            applyFilters();
-        });
-    });
-
+    // Recherche libre
     searchInput?.addEventListener('input', () => {
         activeTag = 'all';
         document.querySelectorAll('.filter-btn').forEach(b =>
@@ -217,90 +208,3 @@ if (filterBar && cards.length > 0) {
         applyFilters();
     });
 }
-    // ── Filtrage par tag ──────────────────────────────────────
-    (function() {
-      const filterBar   = document.getElementById('filter-bar');
-      const searchInput = document.getElementById('tag-search');
-      const noResults   = document.getElementById('no-results');
-      const cards       = document.querySelectorAll('.project-card[data-tags]');
-      if (!filterBar || !cards.length) return;
-
-      // Collecter tous les data-tag uniques depuis les spans .tag dans les cartes
-      const allTags = new Set();
-      cards.forEach(card => {
-        card.querySelectorAll('.tag[data-tag]').forEach(t => allTags.add(t.dataset.tag.toLowerCase()));
-      });
-
-      // Générer les boutons de filtre
-      allTags.forEach(tag => {
-        // Trouver le label affiché depuis le span correspondant
-        const label = document.querySelector(`.tag[data-tag="${tag}"]`)?.textContent.trim() ?? (tag.charAt(0).toUpperCase() + tag.slice(1));
-        const btn = document.createElement('button');
-        btn.className   = 'filter-btn';
-        btn.dataset.tag = tag;
-        btn.textContent = label;
-        filterBar.appendChild(btn);
-      });
-
-      let activeTag = 'all';
-
-      function applyFilters() {
-        const search = searchInput ? searchInput.value.trim().toLowerCase() : '';
-        let count = 0;
-        cards.forEach(card => {
-          // Récupérer tous les data-tag des spans dans cette carte
-          const tags = Array.from(card.querySelectorAll('.tag[data-tag]'))
-                            .map(t => t.dataset.tag.toLowerCase());
-          // Aussi chercher dans le texte des tags (pour la barre de recherche)
-          const tagTexts = Array.from(card.querySelectorAll('.tag[data-tag]'))
-                               .map(t => t.textContent.trim().toLowerCase());
-
-          const matchTag    = activeTag === 'all' || tags.includes(activeTag);
-          const matchSearch = search === '' ||
-                              tags.some(t => t.includes(search)) ||
-                              tagTexts.some(t => t.includes(search));
-
-          const visible = matchTag && matchSearch;
-          card.classList.toggle('hidden', !visible);
-          if (visible) count++;
-        });
-        if (noResults) noResults.style.display = count === 0 ? 'block' : 'none';
-      }
-
-      // Clic bouton filtre
-      filterBar.addEventListener('click', e => {
-        const btn = e.target.closest('.filter-btn');
-        if (!btn) return;
-        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeTag = btn.dataset.tag;
-        if (searchInput && activeTag !== 'all') searchInput.value = '';
-        applyFilters();
-      });
-
-      // Clic sur un tag dans une carte
-      cards.forEach(card => {
-        card.querySelectorAll('.tag[data-tag]').forEach(tagEl => {
-          tagEl.addEventListener('click', () => {
-            const tag = tagEl.dataset.tag.toLowerCase();
-            activeTag = tag;
-            if (searchInput) searchInput.value = '';
-            document.querySelectorAll('.filter-btn').forEach(b =>
-              b.classList.toggle('active', b.dataset.tag === tag)
-            );
-            applyFilters();
-          });
-        });
-      });
-
-      // Recherche libre
-      if (searchInput) {
-        searchInput.addEventListener('input', () => {
-          activeTag = 'all';
-          document.querySelectorAll('.filter-btn').forEach(b =>
-            b.classList.toggle('active', b.dataset.tag === 'all')
-          );
-          applyFilters();
-        });
-      }
-    })();
