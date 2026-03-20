@@ -19,7 +19,7 @@
         </button>
 
         <div id="a11y-panel" class="a11y-panel a11y-panel-bg"
-            style="position:absolute;bottom:68px;right:0;width:220px;background:white;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.18);border:2px solid #e5e7eb;padding:20px;">
+            style="position:absolute;bottom:68px;right:0;width:220px;background:var(--bg-secondary);border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,0.4);border:2px solid rgba(255,105,180,0.2);padding:20px;">
 
             <h3 style="font-size:16px;font-weight:600;margin-bottom:16px;" class="text-gray-900">Options d'accessibilité</h3>
 
@@ -60,67 +60,47 @@
             </div>
 
             <button id="reset-btn"
-                style="width:100%;padding:10px;border-radius:8px;border:none;cursor:pointer;font-size:14px;background:#e5e7eb;color:#374151;margin-top:8px;">
+                style="width:100%;padding:10px;border-radius:8px;border:none;cursor:pointer;font-size:14px;background:var(--bg-muted);color:var(--text-muted);margin-top:8px;">
                 Réinitialiser les paramètres
             </button>
         </div>
     </div>
 
     <!-- HEADER -->
-    <header id="main-header" style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,0.85);backdrop-filter:blur(12px);border-bottom:1px solid #e5e7eb;">
+    <header id="main-header" style="position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(15,10,26,0.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,105,180,0.2);">
         <div style="max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;height:64px;">
             <div style="font-size:18px;font-weight:600;" class="text-gray-900">ANICET Neidjah - BUT MMI</div>
             <nav style="display:flex;gap:32px;align-items:center;" id="desktop-nav">
-                <a href="index.html" style="text-decoration:none;font-size:15px;" class="text-gray-700">Accueil</a>
-                <a href="index.html#apropos" style="text-decoration:none;font-size:15px;" class="text-gray-700">À propos</a>
-                <a href="project.html" style="text-decoration:none;font-size:15px;color:#2563eb;font-weight:600;">Projets</a>
-                <a href="index.html#competences" style="text-decoration:none;font-size:15px;" class="text-gray-700">Compétences</a>
-                <a href="contact.html" style="text-decoration:none;font-size:15px;" class="text-gray-700">Contact</a>
-                <button id="header-dark-btn" style="width:36px;height:36px;border-radius:8px;border:none;cursor:pointer;background:transparent;display:flex;align-items:center;justify-content:center;" aria-label="Basculer le mode sombre">
-                    <span id="header-icon">🌙</span>
-                </button>
+                <a href="index.html" class="nav-link">Accueil</a>
+                <a href="index.html#apropos" class="nav-link">À propos</a>
+                <a href="project.html" class="nav-link active">Projets</a>
+                <a href="index.html#competences" class="nav-link">Compétences</a>
             </nav>
             <button id="mobile-btn" style="border:none;background:transparent;cursor:pointer;padding:4px;" aria-label="Menu">
                 <svg id="icon-menu" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
                 <svg id="icon-close" width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24" style="display:none;"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
         </div>
-        <div id="mobile-menu" class="mobile-menu" style="border-top:1px solid #e5e7eb;">
+        <div id="mobile-menu" class="mobile-menu" style="border-top:1px solid rgba(255,105,180,0.2);">
             <div style="padding:16px 24px;display:flex;flex-direction:column;gap:16px;">
-                <a href="index.html" class="mobile-link text-gray-700" style="text-decoration:none;font-size:15px;">Accueil</a>
-                <a href="index.html#apropos" class="mobile-link text-gray-700" style="text-decoration:none;font-size:15px;">À propos</a>
-                <a href="project.html" class="mobile-link" style="text-decoration:none;font-size:15px;color:#2563eb;font-weight:600;">Projets</a>
-                <a href="index.html#competences" class="mobile-link text-gray-700" style="text-decoration:none;font-size:15px;">Compétences</a>
-                <a href="contact.html" class="mobile-link text-gray-700" style="text-decoration:none;font-size:15px;">Contact</a>
+                <a href="index.html" class="mobile-link nav-link">Accueil</a>
+                <a href="index.html#apropos" class="mobile-link nav-link">À propos</a>
+                <a href="project.html" class="mobile-link nav-link active">Projets</a>
+                <a href="index.html#competences" class="mobile-link nav-link">Compétences</a>
+                <a href="contact.html" class="mobile-link nav-link">Contact</a>
             </div>
         </div>
     </header>
 
-    <!-- FIL D'ARIANE -->
-    <nav aria-label="Fil d'ariane" style="max-width:1100px;margin:0 auto;padding:80px 24px 0;">
-        <ol style="display:flex;align-items:center;gap:8px;list-style:none;padding:0;margin:0;font-size:14px;">
-            <li>
-                <a href="index.html" style="color:#2563eb;text-decoration:none;display:flex;align-items:center;gap:4px;">
-                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                    Accueil
-                </a>
-            </li>
-            <li style="color:#9ca3af;">
-                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-            </li>
-            <li style="color:#6b7280;font-weight:600;" aria-current="page">Projets</li>
-        </ol>
-    </nav>
-
     <!-- PROJETS -->
-    <section id="projets" class="projects-section-bg" style="padding:20px 24px 80px;background:#f9fafb;min-height:100vh;">
+    <section id="projets" class="projects-section-bg" style="padding:100px 24px 80px;background:var(--bg-primary);min-height:100vh;">
         <div style="max-width:1100px;margin:0 auto;">
 
             <h2 style="font-size:36px;font-weight:800;text-align:center;margin-bottom:12px;" class="text-gray-900">Mes Projets</h2>
             <p style="text-align:center;margin-bottom:40px;" class="text-gray-600">Découvrez une sélection de mes réalisations récentes</p>
 
             <!-- Barre de recherche -->
-            <div class="tag-search-wrapper">
+            <div class="tag-search-wrapper" style="margin-left:auto;margin-right:auto;">
                 <input type="text" id="tag-search" class="tag-search" placeholder="Rechercher par tag… (ex: Design, Branding)" autocomplete="off"/>
             </div>
 
@@ -133,7 +113,7 @@
             <div id="projects-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:32px;">
 
                 <!-- Carte 1 -->
-                <div class="project-card" data-tags="Production graphique" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
+                <div class="project-card" data-tags="Production graphique" style="background:var(--bg-secondary);border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
                     <div style="position:relative;height:220px;overflow:hidden;">
                         <img src="images/Illustration6.png" alt="Affiche de concert du groupe Insane Clown Posse" style="width:100%;height:100%;object-fit:cover;display:block;"/>
                         <div class="project-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">
@@ -159,14 +139,14 @@
                         <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;" class="text-gray-900">Affiche de concert</h3>
                         <p style="font-size:14px;line-height:1.6;margin-bottom:16px;" class="text-gray-600">Une affiche de concert pour le groupe de musique Insane Clown Posse dans le style Swissted.</p>
                         <div style="display:flex;flex-wrap:wrap;gap:8px;">
-                            <span class="tag" data-tag="affiche" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Affiche</span>
-                            <span class="tag" data-tag="design" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Design</span>
+                            <span class="tag" data-tag="affiche" style="padding:4px 12px;background:var(--bg-muted);color:var(--color-accent);border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Affiche</span>
+                            <span class="tag" data-tag="design" style="padding:4px 12px;background:var(--bg-muted);color:var(--color-accent);border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Design</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Carte 2 -->
-                <div class="project-card" data-tags="Production graphique,collaboratifs" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
+                <div class="project-card" data-tags="Production graphique,collaboratifs" style="background:var(--bg-secondary);border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
                     <div style="position:relative;height:220px;overflow:hidden;">
                         <img src="images/mockup.png" alt="Pub Flora Gucci" style="width:100%;height:100%;object-fit:cover;display:block;"/>
                         <div class="project-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">
@@ -192,14 +172,14 @@
                         <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;" class="text-gray-900">Pub Flora Gucci</h3>
                         <p style="font-size:14px;line-height:1.6;margin-bottom:16px;" class="text-gray-600">Un mockup d'une pub pour le parfum Flora de Gucci fait en collaboration avec Berdier Chrisnael.</p>
                         <div style="display:flex;flex-wrap:wrap;gap:8px;">
-                            <span class="tag" data-tag="pub" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Pub</span>
-                            <span class="tag" data-tag="collaboratifs" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Collaboratifs</span>
+                            <span class="tag" data-tag="pub" style="padding:4px 12px;background:var(--bg-muted);color:var(--color-accent);border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Pub</span>
+                            <span class="tag" data-tag="collaboratifs" style="padding:4px 12px;background:var(--bg-muted);color:var(--color-accent);border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Collaboratifs</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- Carte 3 -->
-                <div class="project-card" data-tags="Production graphique" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
+                <div class="project-card" data-tags="Production graphique" style="background:var(--bg-secondary);border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
                     <div style="position:relative;height:220px;overflow:hidden;">
                         <img src="images/logo_noodles.png" alt="Identité de marque" style="width:100%;height:100%;object-fit:cover;display:block;"/>
                         <div class="project-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">
@@ -225,13 +205,13 @@
                         <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;" class="text-gray-900">Identité de Marque</h3>
                         <p style="font-size:14px;line-height:1.6;margin-bottom:16px;" class="text-gray-600">Conception complète d'identité visuelle incluant logo et charte graphique.</p>
                         <div style="display:flex;flex-wrap:wrap;gap:8px;">
-                            <span class="tag" data-tag="branding" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Branding</span>
-                            <span class="tag" data-tag="logo" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Logo</span>
+                            <span class="tag" data-tag="branding" style="padding:4px 12px;background:var(--bg-muted);color:var(--color-accent);border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Branding</span>
+                            <span class="tag" data-tag="logo" style="padding:4px 12px;background:var(--bg-muted);color:var(--color-accent);border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Logo</span>
                         </div>
                     </div>
                 </div>
                  <!-- Carte 4 -->
-                <div class="project-card" data-tags="Projet Perso" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
+                <div class="project-card" data-tags="Projet Perso" style="background:var(--bg-secondary);border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
                     <div style="position:relative;height:220px;overflow:hidden;">
                         <img src="images/pperso.png" alt="Site personel" style="width:100%;height:100%;object-fit:cover;display:block;"/>
                         <div class="project-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">
@@ -254,16 +234,16 @@
                         </div>
                     </div>
                     <div style="padding:24px;">
-                        <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;" class="text-gray-900">Site Personel</h3>
-                        <p style="font-size:14px;line-height:1.6;margin-bottom:16px;" class="text-gray-600">Mon site personnel qui regroupe la plupart de mes projets personnel.</p>
+                        <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;" class="text-gray-900">Site Personnel</h3>
+                        <p style="font-size:14px;line-height:1.6;margin-bottom:16px;" class="text-gray-600">Mon site personnel qui regroupe la plupart de mes projets personnels.</p>
                         <div style="display:flex;flex-wrap:wrap;gap:8px;">
-                            <span class="tag" data-tag="pperso" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Projects Perso</span>
-                            <span class="tag" data-tag="website" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Website</span>
+                            <span class="tag" data-tag="pperso" style="padding:4px 12px;background:var(--bg-muted);color:var(--color-accent);border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Projects Perso</span>
+                            <span class="tag" data-tag="website" style="padding:4px 12px;background:var(--bg-muted);color:var(--color-accent);border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Website</span>
                         </div>
                     </div>
                 </div>
    <!-- Carte 5 -->
-                <div class="project-card" data-tags="Développement Web,collaboratifs" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
+                <div class="project-card" data-tags="Développement Web,collaboratifs" style="background:var(--bg-secondary);border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
                     <div style="position:relative;height:220px;overflow:hidden;">
                         <img src="images/site_maeries.png" alt="Site Mareis" style="width:100%;height:100%;object-fit:cover;display:block;"/>
                         <div class="project-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">
@@ -287,15 +267,15 @@
                     </div>
                     <div style="padding:24px;">
                         <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;" class="text-gray-900">Site Mareis</h3>
-                        <p style="font-size:14px;line-height:1.6;margin-bottom:16px;" class="text-gray-600">Site fais en collaborations sur la protection maritime.</p>
+                        <p style="font-size:14px;line-height:1.6;margin-bottom:16px;" class="text-gray-600">Site fait en collaboration sur la protection maritime.</p>
                         <div style="display:flex;flex-wrap:wrap;gap:8px;">
-                            <span class="tag" data-tag="pperso" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Projects Perso</span>
-                            <span class="tag" data-tag="website" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Website</span>
+                            <span class="tag" data-tag="pperso" style="padding:4px 12px;background:var(--bg-muted);color:var(--color-accent);border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Projects Perso</span>
+                            <span class="tag" data-tag="website" style="padding:4px 12px;background:var(--bg-muted);color:var(--color-accent);border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Website</span>
                         </div>
                     </div>
                 </div>
 <!-- Carte 6 -->
-                <div class="project-card" data-tags="Production graphique" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
+                <div class="project-card" data-tags="Production graphique" style="background:var(--bg-secondary);border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
                     <div style="position:relative;height:220px;overflow:hidden;">
                         <img src="images/img_photoshop.png" alt="Portrait Plastique" style="width:100%;height:100%;object-fit:cover;display:block;"/>
                         <div class="project-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">
@@ -319,14 +299,14 @@
                     </div>
                     <div style="padding:24px;">
                         <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;" class="text-gray-900">Portrait Plastique</h3>
-                        <p style="font-size:14px;line-height:1.6;margin-bottom:16px;" class="text-gray-600">Montage fais utilisant Photoshop</p>
+                        <p style="font-size:14px;line-height:1.6;margin-bottom:16px;" class="text-gray-600">Montage fait avec Photoshop</p>
                         <div style="display:flex;flex-wrap:wrap;gap:8px;">
-                            <span class="tag" data-tag="pperso" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Photoshop</span>
+                            <span class="tag" data-tag="pperso" style="padding:4px 12px;background:var(--bg-muted);color:var(--color-accent);border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Photoshop</span>
                         </div>
                     </div>
                 </div>
                      <!-- Carte 7 -->
-                <div class="project-card" data-tags="Production graphique,Expression" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
+                <div class="project-card" data-tags="Production graphique,Expression" style="background:var(--bg-secondary);border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
                     <div style="position:relative;height:220px;overflow:hidden;">
                         <img src="images/Flyer_illustratif.png" alt="Flyer BUT MMI" style="width:100%;height:100%;object-fit:cover;display:block;"/>
                         <div class="project-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">
@@ -352,14 +332,14 @@
                         <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;" class="text-gray-900">Flyer BUT MMI</h3>
                         <p style="font-size:14px;line-height:1.6;margin-bottom:16px;" class="text-gray-600">Flyer sur le BUT MMI</p>
                         <div style="display:flex;flex-wrap:wrap;gap:8px;">
-                            <span class="tag" data-tag="affiche" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Affiche</span>
-                            <span class="tag" data-tag="design" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Design</span>
+                            <span class="tag" data-tag="affiche" style="padding:4px 12px;background:var(--bg-muted);color:var(--color-accent);border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Affiche</span>
+                            <span class="tag" data-tag="design" style="padding:4px 12px;background:var(--bg-muted);color:var(--color-accent);border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Design</span>
                         </div>
                     </div>
                 </div>
 
                      <!-- Carte 8 -->
-                <div class="project-card" data-tags="Production audio & video,collaboratifs" style="background:white;border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
+                <div class="project-card" data-tags="Production audio & video,collaboratifs" style="background:var(--bg-secondary);border-radius:16px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,0.08);transition:box-shadow 0.3s;">
                     <div style="position:relative;height:220px;overflow:hidden;">
                         <img src="images/film1.png" alt="Extrait du film" style="width:100%;height:100%;object-fit:cover;display:block;"/>
                         <div class="project-overlay" style="position:absolute;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center;">
@@ -382,16 +362,16 @@
                         </div>
                     </div>
                     <div style="padding:24px;">
-                        <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;" class="text-gray-900">Film d'horreur&nbsp;</h3>
-                        <p style="font-size:14px;line-height:1.6;margin-bottom:16px;" class="text-gray-600">Un extrait de&nbsp; 1 minute d'un film d'horreur fais en collaborations.</p>
+                        <h3 style="font-size:18px;font-weight:700;margin-bottom:8px;" class="text-gray-900">Film d'horreur</h3>
+                        <p style="font-size:14px;line-height:1.6;margin-bottom:16px;" class="text-gray-600">Un extrait d'1 minute d'un film d'horreur fais en collaborations.</p>
                         <div style="display:flex;flex-wrap:wrap;gap:8px;">
-                            <span class="tag" data-tag="affiche" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Vidéographie&nbsp;</span>
-                            <span class="tag" data-tag="affiche" style="padding:4px 12px;background:#dbeafe;color:#1d4ed8;border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Collaboratifs</span>
+                            <span class="tag" data-tag="affiche" style="padding:4px 12px;background:var(--bg-muted);color:var(--color-accent);border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Vidéographie</span>
+                            <span class="tag" data-tag="affiche" style="padding:4px 12px;background:var(--bg-muted);color:var(--color-accent);border-radius:9999px;font-size:12px;font-weight:500;cursor:pointer;">Collaboratifs</span>
                         </div>
                     </div>
                 </div>
                 <!-- Message aucun résultat -->
-                <div id="no-results">
+                <div id="no-results" style="display:none;">
                     <span>🔍</span>
                     Aucun projet ne correspond à ce tag.
                 </div>
@@ -399,124 +379,16 @@
             </div><!-- /grille -->
         </div><!-- /max-width -->
     </section>
-     <!-- FOOTER -->
-        <footer class="footer-bg" style="background: #111827; color: white; padding: 64px 24px 32px">
-            <div style="max-width: 1100px; margin: 0 auto">
-                <div
-                    style="
-                        display: grid;
-                        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-                        gap: 40px;
-                        margin-bottom: 40px;
-                    ">
-                    <div>
-                        <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px">Portfolio</h3>
-                        <p style="color: #6b7280; font-size: 14px; line-height: 1.7">Tout mes projets en un endroit.</p>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px">Liens rapides</h3>
-                        <div style="display: flex; flex-direction: column; gap: 10px">
-                            <a
-                                href="index.html"
-                                class="footer-link"
-                                style="color: #6b7280; text-decoration: none; font-size: 14px"
-                                >Accueil</a
-                            >
-                            <a
-                                href="project.html"
-                                class="footer-link"
-                                style="color: #6b7280; text-decoration: none; font-size: 14px"
-                                >Projets</a
-                            >
-                            <a
-                                href="contact.html"
-                                class="footer-link"
-                                style="color: #6b7280; text-decoration: none; font-size: 14px"
-                                >Contact</a
-                            >
-                        </div>
-                    </div>
-                    <div>
-                        <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px">Suivez-moi</h3>
-                        <div style="display: flex; gap: 12px">
-                            <a
-                                href="https://sillylinks.carrd.co/"
-                                class="footer-icon-bg"
-                                style="
-                                    width: 40px;
-                                    height: 40px;
-                                    background: #1f2937;
-                                    border-radius: 9999px;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    color: white;
-                                "
-                                aria-label="Github">
-                                <svg
-                                    version="1.1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                                    x="0px"
-                                    y="0px"
-                                    viewBox="0 0 640 640"
-                                    style="enable-background: new 0 0 640 640"
-                                    xml:space="preserve">
-                                    <path
-                                        fill="currentColor"
-                                        d="M529.2,465.1L269.1,590c-1.6,0.8-3.4,1.2-5.2,1.2c-2.2,0-4.4-0.6-6.4-1.8c-3.5-2.2-5.6-6-5.6-10.2V455.5 l-140.5-58.8c-4.5-1.9-7.4-6.2-7.4-11.1V60.8c0-4.1,2.1-8,5.6-10.2c3.5-2.2,7.9-2.4,11.6-0.7l270.4,129.8l127.3-61.1 c3.7-1.8,8.1-1.5,11.6,0.7c3.5,2.2,5.6,6,5.6,10.2v324.8C536,458.9,533.4,463.1,529.2,465.1z M128,79.9v297.7l123.9,51.9v-59.8 l-77.9-31.4c-6.1-2.5-9.1-9.5-6.7-15.6c2.5-6.2,9.5-9.1,15.6-6.7l69,27.8v-49.1l-77.9-31.4c-6.1-2.5-9.1-9.5-6.7-15.6 c2.5-6.2,9.5-9.1,15.6-6.7l69,27.8v-14.3c0-4.6,2.6-8.8,6.8-10.8l17.8-8.6l-103.1-46.9c-6-2.7-8.7-9.9-6-15.9c2.7-6,9.9-8.7,15.9-6 l121.3,55.3l59.1-28.4L128,79.9z M512,148.6L275.9,262v24.3c0,0,0,0,0,0.1v74.9c0,0,0,0,0,0.1v198.8L512,446.7V148.6z M321,303.8 l135.3-65.4c6-2.9,13.1-0.4,16,5.6c2.9,6,0.4,13.2-5.6,16l-135.3,65.4c-1.7,0.8-3.5,1.2-5.2,1.2c-4.5,0-8.7-2.5-10.8-6.8 C312.6,313.9,315.1,306.7,321,303.8z M321,378.8l135.3-65.4c6-2.9,13.1-0.4,16,5.6c2.9,6,0.4,13.2-5.6,16l-135.3,65.4 c-1.7,0.8-3.5,1.2-5.2,1.2c-4.5,0-8.7-2.5-10.8-6.8C312.6,388.8,315.1,381.7,321,378.8z M321,453.7l135.3-65.4 c6-2.9,13.1-0.4,16,5.6c2.9,6,0.4,13.2-5.6,16l-135.3,65.4c-1.7,0.8-3.5,1.2-5.2,1.2c-4.5,0-8.7-2.5-10.8-6.8 C312.6,463.8,315.1,456.6,321,453.7z" />
-                                </svg>
-                            </a>
-                            <a
-                                href="https://gp.linkedin.com/in/neidjah-anicet-830332389"
-                                class="footer-icon-bg"
-                                style="
-                                    width: 40px;
-                                    height: 40px;
-                                    background: #1f2937;
-                                    border-radius: 9999px;
-                                    display: flex;
-                                    align-items: center;
-                                    justify-content: center;
-                                    color: white;
-                                "
-                                aria-label="LinkedIn">
-                                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
-                                    <path
-                                        d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div
-                    style="
-                        border-top: 1px solid #1f2937;
-                        padding-top: 24px;
-                        text-align: center;
-                        color: #6b7280;
-                        font-size: 14px;
-                    ">
-                    © Neidjah Anicet-BUT MMI 2026.
-                </div>
-            </div>
-        </footer>
+   
+    <!-- ── FOOTER ── -->
+    <footer class="footer">
+      <div class="container">
+        <p class="footer-text">Fait avec <span class="heart-pulse">♥</span> et une touche de chaos coloré</p>
+        <p class="footer-copyright">© Neidjah Anicet – BUT MMI 2026 ✧</p>
+      </div>
+    </footer>
 
-        <script>
-            const root = document.documentElement;
-            const KEY = 'theme-dark';
-            const apply = v => root.classList.toggle('theme-dark', v);
-            apply(localStorage.getItem(KEY)==='1');
-            addEventListener('change', e=>{
-            if(e.target && e.target.id==='themeToggle'){
-            const v = e.target.checked; apply(v); localStorage.setItem(KEY,
-            v?'1':'0');
-            }
-            });
-                nav a.actif{ font-weight:700; }
-            .breadcrumb ol{ display:flex; gap:.5rem; list-style:none; padding:0; }
-            .breadcrumb li+li::before{ content:"/"; opacity:.6; margin-right:.5rem; }
-        </script>
-        <script src="script.js"></script>
-    </body>
+    <script src="script.js"></script>
+
+</body>
 </html>
